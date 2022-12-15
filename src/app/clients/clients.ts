@@ -2,13 +2,15 @@ export class Clients {
     
     id: number;
 
+    identificationType: string;
+
     identificationNumber: number;
 
-    firstName: String;
+    firstName: string;
 
-    lastName: String;
+    lastName: string;
 
-    email: String;
+    email: string;
 
     dateOfBirth: Date;
 

@@ -12,8 +12,29 @@ export class ClientsService {
 
   constructor(private http:HttpClient) { }
 
-  //Get Clients
+  //Get clients
   getAll():Observable<Clients[]>{
     return this.http.get<Clients[]>(this.url);
   }
+
+  //Create client
+  create(client:Clients):Observable<Clients>{
+    return this.http.post<Clients>(this.url, client);
+  }
+
+  //Get client by Id
+  getClientById(id:number):Observable<Clients>{
+    return this.http.get<Clients>(this.url+'/'+id);
+  }
+
+  //Update client
+  update(client:Clients):Observable<Clients>{
+    return this.http.post<Clients>(this.url, client)
+  }
+
+  //Delete client
+  deleteClientById(id:number):Observable<Clients>{
+    return this.http.delete<Clients>(this.url+'/'+id);
+  }
+
 }

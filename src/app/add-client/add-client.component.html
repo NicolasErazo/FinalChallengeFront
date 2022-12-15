@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row py-4">
+        <div class="card py-4">
+            <div class="card-header">
+                <h5 class="card-title text-center"><strong>Client Creation</strong></h5>
+            </div>
+            <form>
+
+                <div class="row g-3 align-items-center py-2">
+                    <div class="col-md-2">
+                        <label for="identificationNumber" class="col-form-label">Identification Number</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="number" name="identificationNumber" [(ngModel)]="client.identificationNumber" class="form-control" aria-describedby="passwordHelpInline"
+                            placeholder="Enter your identification number">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="identificationType">Identification Type</label>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select" aria-label="Default select example" name="identificationType"  [(ngModel)]="client.identificationType">
+                            <option selected>Click Here</option>
+                            <option value="citizenship_card">Citizenship_card</option>
+                            <option value="foreigner_id">Foreigner_id</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center py-2">
+                    <div class="col-md-1">
+                        <label for="firstName" class="col-form-label">Firstname</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="firstName" [(ngModel)]="client.firstName" aria-describedby="passwordHelpInline"
+                            placeholder="Firstname">
+                    </div>
+                    <div class="col-md-1">
+                        <label for="lastName" class="col-form-label">Lastname</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" name="lastName" [(ngModel)]="client.lastName" aria-describedby="passwordHelpInline"
+                            placeholder="Lastname">
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center py-2">
+                    <div class="col-md-1">
+                        <label for="email" class="col-form-label">Email</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="email" class="form-control" name="email" [(ngModel)]="client.email" aria-describedby="passwordHelpInline"
+                            placeholder="Email">
+                    </div>
+                    <div class="col-md-2">
+                        <label for="dateOfBirth" class="col-form-label">Date Of Birth</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="date" class="form-control" name="dateOfBirth" [(ngModel)]="client.dateOfBirth" aria-describedby="passwordHelpInline"
+                            placeholder="Lastname">
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button class="btn btn-success" style="width: 226px;" role="button" (click)='create()' *ngIf="!client.id else elseBlock">Save</button>
+                </div>
+
+                <ng-template #elseBlock>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" style="width: 226px;" role="button" (click)='update()'>Update</button>
+                </div>
+                </ng-template>
+                
+
+            </form>
+        </div>
+    </div>
+</div>
