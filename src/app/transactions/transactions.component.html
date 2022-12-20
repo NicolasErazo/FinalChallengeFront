@@ -1,0 +1,32 @@
+<div class="container py-4">
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title text-center"><strong>Transactions</strong></h5>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive text-nowrap">
+                <table class="table table-striped table-bordered text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col">typeOfTransaction</th>
+                      <th scope="col">description</th>
+                      <th scope="col">value</th>
+                      <th scope="col">typeOfMovement</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let transaction of transactions">
+                      <td>{{ transaction.typeOfTransaction }}</td>
+                      <td>{{ transaction.description }}</td>
+                      <td>{{ transaction.value }}</td>
+                      <td>{{ transaction.typeOfMovement }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+          </div>
+    </div>
+</div>

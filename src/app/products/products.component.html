@@ -20,6 +20,8 @@
                       <th scope="col">CreatedAt</th>
                       <th scope="col">UpdatedAt</th>
                       <th scope="col">Transactions</th>
+                      <th scope="col">Manage</th>
+                      <th scope="col">Change Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -32,10 +34,12 @@
                       <td>{{ product.gmf }}</td>
                       <td>{{ product.createdAt }}</td>
                       <td>{{ product.updatedAt }}</td>
-                      <td><button type="button" name="button" class="btn btn-success" [routerLink]="['clients',product.client_id]"><i class="fa-solid fa-face-smile"></i></button></td>
+                      <td><button type="button" name="button" class="btn btn-primary" [routerLink]="['transactions',product.id]"><i class="fa-solid fa-circle-info"></i></button></td>
+                      <td><button type="button" name="button" class="btn btn-success" [routerLink]="['transactions',product.id,'add']"><i class="fa-solid fa-face-smile"></i></button></td>
+                      <td><button class="btn btn-danger" [routerLink]="['addProduct']"><i class="fa-solid fa-code-compare"></i></button></td>
                     </tr>
                   </tbody>
-                </table>
+                </table>  
               </div>
 
             </div>

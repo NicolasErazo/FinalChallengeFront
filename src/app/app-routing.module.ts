@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddClientComponent } from './add-client/add-client.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import { ClientsComponent } from './clients/clients.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 const routes: Routes = [
   {
@@ -35,7 +37,15 @@ const routes: Routes = [
   {
     path:'clients/:id/products/addProduct',
     component:AddProductComponent
-  }
+  },
+  {
+    path:'clients/:id/products/transactions/:idTransaction',
+    component:TransactionsComponent
+  },
+  {
+    path:'clients/:idClient/products/transactions/:idProduct/add',
+    component:AddTransactionComponent
+  },
 ];
 
 @NgModule({

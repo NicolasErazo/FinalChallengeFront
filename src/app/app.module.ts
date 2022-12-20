@@ -11,6 +11,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddClientComponent } from './add-client/add-client.component';
 import { ProductsComponent } from './products/products.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     AddClientComponent,
     ProductsComponent,
     AddProductComponent,
+    TransactionsComponent,
+    AddTransactionComponent,
   ],
   imports: [
     BrowserModule,

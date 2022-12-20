@@ -18,7 +18,6 @@ export class ProductsService {
   }
 
   //Create client
-  //Recuperar Cliente Id
   createProduct(product:Products, id:number):Observable<Products>{
     return this.http.post<Products>(this.url+'/'+id+'/products/add', product);
   }

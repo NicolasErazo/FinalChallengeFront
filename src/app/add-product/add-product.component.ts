@@ -14,8 +14,6 @@ export class AddProductComponent {
   client:Clients = new Clients();
 
   constructor(private productService: ProductsService, private router:Router,private route: ActivatedRoute ){}
-  
-  ngOnInit(): void { }
 
   createProduct():void{
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -25,6 +23,5 @@ export class AddProductComponent {
     console.log(params.get('id'))
       });
   }
-
 
 }

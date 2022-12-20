@@ -14,7 +14,6 @@ export class ProductsComponent implements OnInit{
 
   constructor(private productService: ProductsService, private route: ActivatedRoute){}
 
-  //Falta ID de client_id
   ngOnInit(): void {    
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.productService.getAllProductsByClient(Number(params.get('id'))).subscribe(
