@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Clients } from './clients';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +35,8 @@ export class ClientsService {
 
   //Delete client
   deleteClientById(id:number):Observable<Clients>{
-    return this.http.delete<Clients>(this.url+'/'+id);
+    console.log(id);
+    return this.http.delete<Clients>(this.url+'/'+id)
   }
 
 }

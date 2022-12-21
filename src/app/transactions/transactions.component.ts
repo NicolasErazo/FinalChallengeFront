@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+
 import { Transactions } from './transactions';
 import { TransactionsService } from './transactions.service';
 
@@ -15,7 +16,7 @@ export class TransactionsComponent implements OnInit{
 
   ngOnInit(): void {    
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.transactionService.getAllTransactionsByProduct(Number(params.get('idTransaction'))).subscribe(
+      this.transactionService.getAllTransactionsByProduct(Number(params.get('idProduct'))).subscribe(
         d => this.transactions = d
       );
     });

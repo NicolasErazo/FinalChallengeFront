@@ -6,21 +6,40 @@
             </div>
             <form>
 
-                <div class="row g-3 align-items-center py-2">
-                    <div class="col-md-12">
-                        <select class="form-select" aria-label="Default select example" name="accountType"
-                            [(ngModel)]="product.accountType">
-                            <option selected>Account Type</option>
-                            <option value="current_account">Current_account</option>
-                            <option value="savings_account">Savings_account</option>
-                        </select>
+                <div *ngIf="!product.id else elseBlock">
+                    <div class="row g-3 align-items-center py-2">
+                        <div class="col-md-12">
+                            <select class="form-select" aria-label="Default select example" name="accountType"
+                                [(ngModel)]="product.accountType">
+                                <option selected>Account Type</option>
+                                <option value="current_account">Current_account</option>
+                                <option value="savings_account">Savings_account</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-success" style="width: 226px;" role="button" (click)='createProduct()'>Create</button>
                     </div>
                 </div>
 
-                <div class="text-center mt-4">
-                    <button class="btn btn-success" style="width: 226px;" role="button"
-                        (click)='createProduct()'>Create</button>
-                </div>
+                <ng-template #elseBlock>
+                    <div class="row g-3 align-items-center py-2">
+                        <div class="col-md-12">
+                            <select class="form-select" aria-label="Default select example" name="status"
+                                [(ngModel)]="product.status">
+                                <option selected>Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="canceled">Canceled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" style="width: 226px;" role="button" (click)='update()'>Update</button>
+                    </div>
+                </ng-template>
 
             </form>
         </div>

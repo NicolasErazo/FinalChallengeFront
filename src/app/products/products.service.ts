@@ -28,8 +28,8 @@ export class ProductsService {
   }
 
   //Update client
-  update(product:Products):Observable<Products>{
-    return this.http.post<Products>(this.url, product)
+  update(product:Products, id:number):Observable<Products>{
+    return this.http.post<Products>(this.url+'/'+id+'/products/add', product)
   }
 
 }

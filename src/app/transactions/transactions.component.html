@@ -2,17 +2,18 @@
     <div class="row">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title text-center"><strong>Transactions</strong></h5>
+                <h5 class="card-title text-center"><strong>Transactions By Product</strong></h5>
             </div>
             <div class="card-body">
               <div class="table-responsive text-nowrap">
                 <table class="table table-striped table-bordered text-center">
                   <thead>
                     <tr>
-                      <th scope="col">typeOfTransaction</th>
-                      <th scope="col">description</th>
-                      <th scope="col">value</th>
-                      <th scope="col">typeOfMovement</th>
+                      <th scope="col">TypeOfTransaction</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Value</th>
+                      <th scope="col">TypeOfMovement</th>
+                      <th scope="col">DateOfMovement</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -21,6 +22,7 @@
                       <td>{{ transaction.description }}</td>
                       <td>{{ transaction.value }}</td>
                       <td>{{ transaction.typeOfMovement }}</td>
+                      <td>{{ transaction.dateOfMovement }}</td>
                     </tr>
                   </tbody>
                 </table>

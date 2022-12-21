@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { Transactions } from '../transactions/transactions';
 import { TransactionsService } from '../transactions/transactions.service';
 
@@ -17,7 +18,19 @@ export class AddTransactionComponent {
   createProduct():void{
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.transactionService.createProduct(this.transaction, Number(params.get('idProduct'))).subscribe(
-        res=>this.router.navigate(['clients'+'/'+Number(params.get('idClient'))+'/products'])
+        res=>{this.router.navigate(['clients'+'/'+Number(params.get('idClient'))+'/products']),
+        Swal.fire('Transaction Made!', 'Successful request!', 'success');},
+        (err) => {
+          // Entra aquí si el servicio entrega un código http de error EJ: 404,
+  
+          if (err.status == 500) {
+            Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
+          }
+  
+          if (err.status == 400) {
+            Swal.fire('Select a valid value!', 'ok?', 'error');
+          }
+        }
     );
     console.log(params.get('idClient'))
       });

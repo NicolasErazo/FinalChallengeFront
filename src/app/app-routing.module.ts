@@ -39,7 +39,11 @@ const routes: Routes = [
     component:AddProductComponent
   },
   {
-    path:'clients/:id/products/transactions/:idTransaction',
+    path:'clients/:id/products/:idProduct',
+    component:AddProductComponent
+  },
+  {
+    path:'clients/:idClient/products/:idProduct/transactions',
     component:TransactionsComponent
   },
   {
