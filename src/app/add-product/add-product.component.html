@@ -8,7 +8,10 @@
 
                 <div *ngIf="!product.id else elseBlock">
                     <div class="row g-3 align-items-center py-2">
-                        <div class="col-md-12">
+                        <div class="col-md-3 text-center">
+                            <label for="accountType">Select the type of product to create:</label>
+                        </div>
+                        <div class="col-md-9">
                             <select class="form-select" aria-label="Default select example" name="accountType"
                                 [(ngModel)]="product.accountType">
                                 <option selected>Account Type</option>
