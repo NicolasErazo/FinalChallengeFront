@@ -37,7 +37,7 @@ export class AddClientComponent implements OnInit {
         }
 
         if (err.status == 400) {
-          Swal.fire('You must be of legal age!', 'ok?', 'error');
+          Swal.fire('You must be of legal age!', 'Ok?', 'error');
         }
       }
     );

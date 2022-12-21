@@ -20,13 +20,25 @@ export class ClientsComponent implements OnInit {
   }
 
   delete(client: Clients): void {
-    this.clientService.deleteClientById(client.id).subscribe((res) =>
-      this.clientService.getAll().subscribe(
-        (response) => {
-          this.clients = response,
-          Swal.fire('Client Deleted!', 'Successful request!', 'success');
+    this.clientService.deleteClientById(client.id).subscribe(
+      (res) => {
+        this.clientService.getAll().subscribe((response) => {
+          (this.clients = response),
+            Swal.fire('Client Deleted!', 'Successful request!', 'success');
+        });
+      },
+      (err) => {
+        console.log(err);
+        // Entra aquí si el servicio entrega un código http de error EJ: 404,
+
+        if (err.status == 500) {
+          Swal.fire(
+            '¡Cannot delete a customer with active products!',
+            'Ok?',
+            'error'
+          );
         }
-      )
+      }
     );
   }
 }

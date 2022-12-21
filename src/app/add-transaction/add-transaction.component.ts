@@ -28,7 +28,7 @@ export class AddTransactionComponent {
           }
   
           if (err.status == 400) {
-            Swal.fire('Select a valid value!', 'ok?', 'error');
+            Swal.fire('Select a valid value!', 'Ok?', 'error');
           }
         }
     );
