@@ -7,6 +7,7 @@
             <form>
 
                 <div *ngIf="!product.id else elseBlock">
+                    
                     <div class="row g-3 align-items-center py-2">
                         <div class="col-md-3 text-center">
                             <label for="accountType">Select the type of product to create:</label>
@@ -43,6 +44,10 @@
                         <button class="btn btn-primary" style="width: 226px;" role="button" (click)='update()'>Update</button>
                     </div>
                 </ng-template>
+
+                <div class="text-center mt-2">
+                    <a class="btn btn-secondary" href="javascript:history.back(-1);" style="width: 226px;" role="button">Cancel</a>
+                </div>  
 
             </form>
         </div>

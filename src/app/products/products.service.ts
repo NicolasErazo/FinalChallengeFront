@@ -12,23 +12,23 @@ export class ProductsService {
 
   constructor(private http:HttpClient) { }
 
-  //Get clients
+  //Get Products by Client
   getAllProductsByClient(id:number):Observable<Products[]>{
     return this.http.get<Products[]>(this.url+'/'+id+'/products');
   }
 
-  //Create client
+  //Create Product by Client
   createProduct(product:Products, id:number):Observable<Products>{
     return this.http.post<Products>(this.url+'/'+id+'/products/add', product);
   }
 
-  //Get client by Id
-  getProductOfClientById(id:number):Observable<Products>{
-    return this.http.get<Products>(this.url+'/'+id);
+  //Get Product by clientId
+  getProductOfClientById(idClient:number,idProduct:number):Observable<Products>{
+    return this.http.get<Products>(this.url+'/'+idClient+'/products/'+idProduct);
   }
 
-  //Update client
-  update(product:Products, id:number):Observable<Products>{
+  //Update Product
+  updateProduct(product:Products, id:number):Observable<Products>{
     return this.http.post<Products>(this.url+'/'+id+'/products/add', product)
   }
 

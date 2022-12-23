@@ -13,6 +13,7 @@ import { ProductsService } from '../products/products.service';
 export class AddProductComponent implements OnInit{
   product:Products = new Products();
   client:Clients = new Clients();
+  activatedRoute: any;
 
   constructor(private productService: ProductsService, private router:Router,private route: ActivatedRoute ){}
   
@@ -41,26 +42,25 @@ export class AddProductComponent implements OnInit{
       });
   }
 
-  data():void{
-    this.route.params.subscribe(
-      e=>{
-        let id=e['idProduct'];
-        if(id){
-          this.productService.getProductOfClientById(id).subscribe(
-            r=>this.product=r
-          );
-        }
+  data(): void {
+    this.route.params.subscribe((e: any) => {
+      let idClient = e['id'];
+      let idProduct = e['idProduct'];
+      if (idProduct) {
+        this.productService
+          .getProductOfClientById(idClient,idProduct)
+          .subscribe((r) => (this.product = r));
       }
-    );
+    });
   }
-
+  
   update():void{
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.productService.update(this.product, Number(params.get('idProduct'))).subscribe(
-        res=>this.router.navigate(['clients'+'/'+Number(params.get('id'))+'/products'])
+      this.productService.updateProduct(this.product, Number(params.get('id'))).subscribe(
+        res=>{this.router.navigate(['clients'+'/'+Number(params.get('id'))+'/products']),
+        Swal.fire('Product Updated!', 'Successful request!', 'success');},
     );
     console.log(params.get('idProduct'))
       });
   }
-
 }

@@ -5,7 +5,7 @@
                 <h5 class="card-title text-center"><strong>Client Creation</strong></h5>
             </div>
             <form>
-
+                {{client.firstName}}
                 <div class="row g-3 align-items-center py-2">
                     <div class="col-md-2">
                         <label for="identificationNumber" class="col-form-label">Identification Number:</label>
@@ -69,8 +69,11 @@
                     <button class="btn btn-primary" style="width: 226px;" role="button" (click)='update()'>Update</button>
                 </div>
                 </ng-template>
-                
 
+                <div class="text-center mt-2">
+                    <a class="btn btn-secondary" href="javascript:history.back(-1);" style="width: 226px;" role="button">Cancel</a>
+                </div>                
+                
             </form>
         </div>
     </div>

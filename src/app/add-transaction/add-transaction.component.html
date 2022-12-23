@@ -21,7 +21,20 @@
                     </div>
                 </div>
 
-                <div class="row g-3 align-items-center py-2">
+                <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction == 'transfer'">
+                    <div class="col-md-4">
+                        <label for="accountType">Select the account number to transfer:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="" *ngFor="let product of products">
+                                {{ product.accountNumber }}
+                           </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction != 'transfer'">
                     <div class="col-md-4">
                         <label for="accountType">Select the type of movement to create:</label>
                     </div>
@@ -54,8 +67,12 @@
 
                 <div class="text-center mt-4">
                     <button class="btn btn-success" style="width: 226px;" role="button"
-                        (click)='createProduct()'>Create</button>
+                        (click)='createTransaction()'>Create</button>
                 </div>
+
+                <div class="text-center mt-2">
+                    <a class="btn btn-secondary" href="javascript:history.back(-1);" style="width: 226px;" role="button">Cancel</a>
+                </div>  
 
             </form>
         </div>
