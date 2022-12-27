@@ -38,7 +38,7 @@ export class AddTransactionComponent implements OnInit {
   createTransaction(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.transactionService
-        .createProduct(this.transaction, Number(params.get('idProduct')))
+        .createTransaction(this.transaction, Number(params.get('idProduct')))
         .subscribe(
           (res) => {
             this.router.navigate([

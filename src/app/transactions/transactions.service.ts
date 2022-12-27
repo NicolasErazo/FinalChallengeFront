@@ -18,7 +18,7 @@ export class TransactionsService {
   }
 
   //Create client
-  createProduct(transaction:Transactions, id:number):Observable<Transactions>{
+  createTransaction(transaction:Transactions, id:number):Observable<Transactions>{
     return this.http.post<Transactions>(this.url+'/'+id+'/add', transaction);
   }
 }

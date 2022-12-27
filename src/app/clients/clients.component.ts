@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
-import { Products } from '../products/products';
-import { ProductsService } from '../products/products.service';
+
 import { Clients } from './clients';
 import { ClientsService } from './clients.service';
 
@@ -16,13 +15,13 @@ export class ClientsComponent implements OnInit {
   constructor(private clientService: ClientsService) {}
 
   ngOnInit(): void {
-    this.clientService.getAll().subscribe((c) => (this.clients = c));
+    this.clientService.getAllClients().subscribe((c) => (this.clients = c));
   }
 
   delete(client: Clients): void {
     this.clientService.deleteClientById(client.id).subscribe(
       (res) => {
-        this.clientService.getAll().subscribe((response) => {
+        this.clientService.getAllClients().subscribe((response) => {
           (this.clients = response),
             Swal.fire('Client Deleted!', 'Successful request!', 'success');
         });

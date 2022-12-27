@@ -24,7 +24,7 @@ export class AddClientComponent implements OnInit {
 
   create(): void {
     console.log(this.client);
-    this.clientService.create(this.client).subscribe(
+    this.clientService.createClient(this.client).subscribe(
       (res) => {
         this.router.navigate(['/clients']),
           Swal.fire('Client Created!', 'Successful request!', 'success');
@@ -55,7 +55,7 @@ export class AddClientComponent implements OnInit {
   }
 
   update(): void {
-    this.clientService.update(this.client).subscribe((res) => {
+    this.clientService.updateClient(this.client).subscribe((res) => {
       this.router.navigate(['/clients']),
         Swal.fire('Client Updated!', 'Successful request!', 'success');
     });

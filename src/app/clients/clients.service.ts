@@ -14,12 +14,12 @@ export class ClientsService {
   constructor(private http:HttpClient) { }
 
   //Get clients
-  getAll():Observable<Clients[]>{
+  getAllClients():Observable<Clients[]>{
     return this.http.get<Clients[]>(this.url);
   }
 
   //Create client
-  create(client:Clients):Observable<Clients>{
+  createClient(client:Clients):Observable<Clients>{
     return this.http.post<Clients>(this.url, client);
   }
 
@@ -29,7 +29,7 @@ export class ClientsService {
   }
 
   //Update client
-  update(client:Clients):Observable<Clients>{
+  updateClient(client:Clients):Observable<Clients>{
     return this.http.post<Clients>(this.url, client)
   }
 
