@@ -59,6 +59,13 @@ export class AddProductComponent implements OnInit{
       this.productService.updateProduct(this.product, Number(params.get('id'))).subscribe(
         res=>{this.router.navigate(['clients'+'/'+Number(params.get('id'))+'/products']),
         Swal.fire('Product Updated!', 'Successful request!', 'success');},
+        (err) => {
+          // Entra aquí si el servicio entrega un código http de error EJ: 404,
+          
+          if (err.status == 400) {
+            Swal.fire('Select a valid value!', 'Ok?', 'error');
+          }
+        }
     );
     console.log(params.get('idProduct'))
       });
