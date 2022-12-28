@@ -13,7 +13,7 @@
                     <div class="col-md-8">
                         <select class="form-select" aria-label="Default select example" name="typeOfTransaction"
                             [(ngModel)]="transaction.typeOfTransaction">
-                            <option selected>Type Of Transaction</option>
+                            <option selected disabled>Type Of Transaction</option>
                             <option value="consignment">Consignment</option>
                             <option value="withdrawal">Withdrawal</option>
                             <option value="transfer">Transfer</option>
@@ -27,13 +27,13 @@
                     </div>
                     <div class="col-md-8">
                         <select class="form-select" aria-label="Default select example">
-                            <option value="" *ngFor="let product of products">
+                            <option value="product.id" *ngFor="let product of products">
                                 {{ product.accountNumber }}
                            </option>
                         </select>
                     </div>
                 </div>
-
+                
                 <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction != 'transfer'">
                     <div class="col-md-4">
                         <label for="accountType">Select the type of movement to create:</label>
@@ -41,7 +41,7 @@
                     <div class="col-md-8">
                         <select class="form-select" aria-label="Default select example" name="typeOfMovement"
                             [(ngModel)]="transaction.typeOfMovement">
-                            <option selected>Type Of Movement</option>
+                            <option selected disabled>Type Of Movement</option>
                             <option value="debit">Debit</option>
                             <option value="credit">Credit</option>
                         </select>

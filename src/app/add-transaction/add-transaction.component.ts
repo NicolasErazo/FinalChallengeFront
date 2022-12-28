@@ -65,4 +65,6 @@ export class AddTransactionComponent implements OnInit {
       console.log(params.get('idClient'));
     });
   }
+
+
 }
