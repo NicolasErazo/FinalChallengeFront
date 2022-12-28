@@ -65,6 +65,10 @@ export class AddProductComponent implements OnInit{
           if (err.status == 400) {
             Swal.fire('Select a valid value!', 'Ok?', 'error');
           }
+
+          if (err.status == 406) {
+            Swal.fire('Is the balance 0?!', 'Ok?', 'error');
+          }
         }
     );
     console.log(params.get('idProduct'))

@@ -5,18 +5,18 @@
                 <h5 class="card-title text-center"><strong>Registered Customers</strong></h5>
             </div>
             <div class="card-body">
-
+              <button class="btn btn-success" [routerLink]="['/addClient']">Create Client</button>
+              <br><br>
               <div class="table-responsive text-nowrap">
                 <table class="table table-striped table-bordered text-center">
                   <thead>
                     <tr>
-                      <th scope="col">#Id</th>
-                      <th scope="col">IdentificationType</th>
-                      <th scope="col">IdentificationNumber</th>
                       <th scope="col">Firstname</th>
                       <th scope="col">Lastname</th>
+                      <th scope="col">Identification Type</th>
+                      <th scope="col">Identification Number</th>
                       <th scope="col">Email</th>
-                      <th scope="col">DateOfBirth</th>
+                      <th scope="col">Date Of Birth</th>
                       <th scope="col">CreatedAt</th>
                       <th scope="col">UpdatedAt</th>
                       <th scope="col">Manage</th>
@@ -25,11 +25,10 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let client of clients">
-                      <th scope="row">{{ client.id }}</th>
-                      <td>{{ client.identificationType }}</td>
-                      <td>{{ client.identificationNumber }}</td>
                       <td>{{ client.firstName }}</td>
                       <td>{{ client.lastName }}</td>
+                      <td>{{ client.identificationType }}</td>
+                      <td>{{ client.identificationNumber }}</td>
                       <td>{{ client.email }}</td>
                       <td>{{ client.dateOfBirth }}</td>
                       <td>{{ client.createdAt }}</td>
