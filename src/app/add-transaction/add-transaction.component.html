@@ -26,36 +26,12 @@
                         <label for="accountType">Select the account number to transfer:</label>
                     </div>
                     <div class="col-md-8">
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="product.id" *ngFor="let product of products">
+                        <select class="form-select" aria-label="Default select example" name="id" [(ngModel)]="product.id">
+                        <ng-container *ngFor="let product of products">
+                            <option *ngIf="product.id != idProduct" value="{{product.id}}">
                                 {{ product.accountNumber }}
                            </option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction == 'withdrawal'">
-                    <div class="col-md-4">
-                        <label for="accountType">Select the type of movement to create:</label>
-                    </div>
-                    <div class="col-md-8">
-                        <select class="form-select" aria-label="Default select example" name="typeOfMovement"
-                            [(ngModel)]="transaction.typeOfMovement">
-                            <option selected disabled>Type Of Movement</option>
-                            <option value="credit">Credit</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction == 'consignment'">
-                    <div class="col-md-4">
-                        <label for="accountType">Select the type of movement to create:</label>
-                    </div>
-                    <div class="col-md-8">
-                        <select class="form-select" aria-label="Default select example" name="typeOfMovement"
-                            [(ngModel)]="transaction.typeOfMovement">
-                            <option selected disabled>Type Of Movement</option>
-                            <option value="debit">Debit</option>
+                        </ng-container>
                         </select>
                     </div>
                 </div>
