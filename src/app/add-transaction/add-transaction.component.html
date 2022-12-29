@@ -34,7 +34,20 @@
                     </div>
                 </div>
                 
-                <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction != 'transfer'">
+                <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction == 'withdrawal'">
+                    <div class="col-md-4">
+                        <label for="accountType">Select the type of movement to create:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select" aria-label="Default select example" name="typeOfMovement"
+                            [(ngModel)]="transaction.typeOfMovement">
+                            <option selected disabled>Type Of Movement</option>
+                            <option value="credit">Credit</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center py-2" *ngIf="transaction.typeOfTransaction == 'consignment'">
                     <div class="col-md-4">
                         <label for="accountType">Select the type of movement to create:</label>
                     </div>
@@ -43,7 +56,6 @@
                             [(ngModel)]="transaction.typeOfMovement">
                             <option selected disabled>Type Of Movement</option>
                             <option value="debit">Debit</option>
-                            <option value="credit">Credit</option>
                         </select>
                     </div>
                 </div>
