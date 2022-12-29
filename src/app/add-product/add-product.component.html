@@ -32,7 +32,7 @@
                         <div class="col-md-12">
                             <select class="form-select" aria-label="Default select example" name="status"
                                 [(ngModel)]="product.status">
-                                <option selected>Status</option>
+                                <option selected disabled>Status</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
                                 <option value="canceled">Canceled</option>
@@ -46,7 +46,7 @@
                 </ng-template>
 
                 <div class="text-center mt-2">
-                    <a class="btn btn-secondary" href="javascript:history.back(-1);" style="width: 226px;" role="button">Cancel</a>
+                    <a class="btn btn-danger" href="javascript:history.back(-1);" style="width: 226px;" role="button">Cancel</a>
                 </div>  
 
             </form>
