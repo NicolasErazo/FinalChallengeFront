@@ -60,6 +60,10 @@ export class AddTransactionComponent implements OnInit {
             if (err.status == 400) {
               Swal.fire('Select a valid value!', 'Ok?', 'error');
             }
+
+            if (err.status == 406) {
+              Swal.fire('Transactions are not allowed on a canceled product!', 'Ok?', 'error');
+            }
           }
         );
       console.log(params.get('idClient'));
