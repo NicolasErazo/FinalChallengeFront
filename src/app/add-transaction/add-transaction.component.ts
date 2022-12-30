@@ -74,7 +74,6 @@ export class AddTransactionComponent implements OnInit {
               }
             }
           );
-        console.log(params.get('idClient'));
       });
     } else if (this.transaction.typeOfTransaction == 'consignment') {
       this.transaction.typeOfMovement = 'debit';
@@ -112,7 +111,6 @@ export class AddTransactionComponent implements OnInit {
               }
             }
           );
-        console.log(params.get('idClient'));
       });
     } else if (this.transaction.typeOfTransaction == 'transfer') {
       this.transaction.typeOfMovement = 'credit';
@@ -141,8 +139,6 @@ export class AddTransactionComponent implements OnInit {
                         'success'
                       );
                   });
-                console.log(params.get('idClient'));
-                console.log(this.product.id);
               });
             },
             (err) => {
@@ -165,7 +161,6 @@ export class AddTransactionComponent implements OnInit {
               }
             }
           );
-        console.log(params.get('idClient'));
       });
     } else if (this.transaction.typeOfTransaction == null) {
       this.route.paramMap.subscribe((params: ParamMap) => {
