@@ -12,6 +12,8 @@ import { ProductsService } from './products.service';
 })
 export class ProductsComponent implements OnInit {
   products: Products[];
+  product: Products = new Products();
+  gmf: any;
 
   constructor(
     private productService: ProductsService,
@@ -19,22 +21,17 @@ export class ProductsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      this.route.paramMap.subscribe((params: ParamMap) => {
-        this.productService
-          .getAllProductsByClient(Number(params.get('id')))
-          .subscribe((c) => (this.products = c)
-          );
-      });
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.productService
+        .getAllProductsByClient(Number(params.get('id')))
+        .subscribe((c) => {
+          this.products = c;
+          this.gmf = this.product.gmf;
+        });
+    });
   }
 
-  alert(): void{
+  alert(): void {
     Swal.fire('Transaction Made!', 'Successful request!', 'success');
   }
-
 }
-
-
-/* if(true){
-  console.log(this.products);
-  
-} */
