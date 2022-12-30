@@ -48,11 +48,15 @@ export class AddTransactionComponent implements OnInit {
               this.router.navigate([
                 'clients' + '/' + Number(params.get('idClient')) + '/products',
               ]),
-                Swal.fire('Transaction Made!', 'Successful request!', 'success');
+                Swal.fire(
+                  'Transaction Made!',
+                  'Successful request!',
+                  'success'
+                );
             },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
-  
+
               if (err.status == 500) {
                 Swal.fire(
                   '¡Incorrect Information!',
@@ -60,23 +64,18 @@ export class AddTransactionComponent implements OnInit {
                   'error'
                 );
               }
-  
+
               if (err.status == 400) {
                 Swal.fire('Select a valid value!', 'Ok?', 'error');
               }
-  
+
               if (err.status == 406) {
-                Swal.fire(
-                  'Transaction not allowed!',
-                  'Ok?',
-                  'error'
-                );
+                Swal.fire('Transaction not allowed!', 'Ok?', 'error');
               }
             }
           );
         console.log(params.get('idClient'));
       });
-  
     } else if (this.transaction.typeOfTransaction == 'consignment') {
       this.transaction.typeOfMovement = 'debit';
       this.route.paramMap.subscribe((params: ParamMap) => {
@@ -87,11 +86,15 @@ export class AddTransactionComponent implements OnInit {
               this.router.navigate([
                 'clients' + '/' + Number(params.get('idClient')) + '/products',
               ]),
-                Swal.fire('Transaction Made!', 'Successful request!', 'success');
+                Swal.fire(
+                  'Transaction Made!',
+                  'Successful request!',
+                  'success'
+                );
             },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
-  
+
               if (err.status == 500) {
                 Swal.fire(
                   '¡Incorrect Information!',
@@ -99,23 +102,18 @@ export class AddTransactionComponent implements OnInit {
                   'error'
                 );
               }
-  
+
               if (err.status == 400) {
                 Swal.fire('Select a valid value!', 'Ok?', 'error');
               }
-  
+
               if (err.status == 406) {
-                Swal.fire(
-                  'Transaction not allowed!',
-                  'Ok?',
-                  'error'
-                );
+                Swal.fire('Transaction not allowed!', 'Ok?', 'error');
               }
             }
           );
         console.log(params.get('idClient'));
       });
-  
     } else if (this.transaction.typeOfTransaction == 'transfer') {
       this.transaction.typeOfMovement = 'credit';
       this.route.paramMap.subscribe((params: ParamMap) => {
@@ -126,11 +124,30 @@ export class AddTransactionComponent implements OnInit {
               this.router.navigate([
                 'clients' + '/' + Number(params.get('idClient')) + '/products',
               ]),
-                Swal.fire('Transaction Made!', 'Successful request!', 'success');
+                (this.transaction.typeOfMovement = 'debit');
+              this.route.paramMap.subscribe((params: ParamMap) => {
+                this.transactionService
+                  .createTransaction(this.transaction, this.product.id)
+                  .subscribe((res) => {
+                    this.router.navigate([
+                      'clients' +
+                        '/' +
+                        Number(params.get('idClient')) +
+                        '/products',
+                    ]),
+                      Swal.fire(
+                        'Transaction Made!',
+                        'Successful request!',
+                        'success'
+                      );
+                  });
+                console.log(params.get('idClient'));
+                console.log(this.product.id);
+              });
             },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
-  
+
               if (err.status == 500) {
                 Swal.fire(
                   '¡Incorrect Information!',
@@ -138,37 +155,27 @@ export class AddTransactionComponent implements OnInit {
                   'error'
                 );
               }
-  
+
               if (err.status == 400) {
                 Swal.fire('Select a valid value!', 'Ok?', 'error');
               }
-  
+
               if (err.status == 406) {
-                Swal.fire(
-                  'Transaction not allowed!',
-                  'Ok?',
-                  'error'
-                );
+                Swal.fire('Transaction not allowed!', 'Ok?', 'error');
               }
             }
           );
         console.log(params.get('idClient'));
       });
-      
-      this.transaction.typeOfMovement = 'debit';
+    } else if (this.transaction.typeOfTransaction == null) {
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.transactionService
-          .createTransaction(this.transaction, this.product.id)
+          .createTransaction(this.transaction, Number(params.get('idProduct')))
           .subscribe(
-            (res) => {
-              this.router.navigate([
-                'clients' + '/' + Number(params.get('idClient')) + '/products',
-              ]),
-                Swal.fire('Transaction Made!', 'Successful request!', 'success');
-            },
+            (res) => {},
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
-  
+
               if (err.status == 500) {
                 Swal.fire(
                   '¡Incorrect Information!',
@@ -176,29 +183,9 @@ export class AddTransactionComponent implements OnInit {
                   'error'
                 );
               }
-  
-              if (err.status == 400) {
-                Swal.fire('Select a valid value!', 'Ok?', 'error');
-              }
-  
-              if (err.status == 406) {
-                Swal.fire(
-                  'Transaction not allowed!',
-                  'Ok?',
-                  'error'
-                );
-              }
             }
           );
-        console.log(params.get('idClient'));
-        console.log(this.product.id);
-        
       });
-  
-  
     }
-
-
-
   }
 }
