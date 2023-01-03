@@ -11,12 +11,15 @@ import { LoginService } from './login.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent{
+
   loginDates: login = {
     email: '',
     password: ''
   };
 
-  constructor(private router: Router, private loginService: LoginService) { }
+  constructor(private router: Router, private loginService: LoginService) { } 
+
+  token = this.loginService.getToken();
 
   loginUser(form: NgForm) {
     console.log('form value', form.value);
@@ -25,6 +28,11 @@ export class LoginComponent{
       .subscribe(response => {
         this.router.navigate(['/home'])
         Swal.fire('You are logged in!', 'Welcome!', 'success');
+      }, (err) =>{
+        
+        if (err.status == 403) {
+          Swal.fire('Enter allowed parameters!', 'Ok?', 'error');
+        }
       })
   }
 

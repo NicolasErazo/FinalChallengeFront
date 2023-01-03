@@ -1,34 +1,42 @@
 <div class="container">
     <div class="row py-4">
         <div class="card py-4">
-            <div class="card-header">
-                <h5 class="card-title text-center"><strong>Welcome to BankSophos</strong></h5>
-            </div>
-            <form #form="ngForm" (ngSubmit)="loginUser(form)">
+            <div *ngIf="!token else elseBlock">
+                <div class="card-header">
+                    <h5 class="card-title text-center"><strong>Welcome to BankSophos</strong></h5>
+                </div>
+                <form #form="ngForm" (ngSubmit)="loginUser(form)">
 
-                <div class="text-center mt-4">
-                    <div class="text-center py-2">
-                        <label for="firstName" class="col-form-label"><strong>Email</strong></label>
-                        <input type="email" class="form-control" aria-describedby="passwordHelpInline"
-                            placeholder="Enter your email" [(ngModel)]="loginDates.email" name="email" />
+                    <div class="text-center mt-4">
+                        <div class="text-center py-2">
+                            <label for="firstName" class="col-form-label"><strong>Email</strong></label>
+                            <input type="email" class="form-control" aria-describedby="passwordHelpInline"
+                                placeholder="Enter your email" [(ngModel)]="loginDates.email" name="email" />
+                        </div>
+
+                        <div class="text-center py-2">
+                            <label for="lastName" class="col-form-label"><strong>Password</strong></label>
+                            <input type="password" class="form-control" aria-describedby="passwordHelpInline"
+                                placeholder="Enter your password" [(ngModel)]="loginDates.password" name="password" />
+                        </div>
                     </div>
 
-                    <div class="text-center py-2">
-                        <label for="lastName" class="col-form-label"><strong>Password</strong></label>
-                        <input type="password" class="form-control" aria-describedby="passwordHelpInline"
-                            placeholder="Enter your password" [(ngModel)]="loginDates.password" name="password" />
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" style="width: 226px" role="button" type="submit">
+                            Login
+                        </button>
                     </div>
-                </div>
-
-                <div class="text-center mt-4">
-                    <button class="btn btn-success" style="width: 226px" role="button" type="submit">
-                        Login
-                    </button>
-                </div>
-            </form>
-            <div class="text-center mt-2">
-                <a class="btn btn-danger" style="width: 226px" (click)="destroyToken()">Logout</a>
+                </form>
             </div>
+
+            <ng-template #elseBlock>
+                <div class="card-header">
+                    <h5 class="card-title text-center"><strong>Logout to BankSophos</strong></h5>
+                </div>
+                <div class="text-center mt-4">
+                    <a class="btn btn-danger" style="width: 226px" (click)="destroyToken()">Logout</a>
+                </div>
+            </ng-template>
         </div>
     </div>
 </div>
