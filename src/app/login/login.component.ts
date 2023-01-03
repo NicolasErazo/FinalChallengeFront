@@ -24,14 +24,14 @@ export class LoginComponent{
     this.loginService.login(this.loginDates)
       .subscribe(response => {
         this.router.navigate(['/home'])
-        Swal.fire('You are logged in!', 'Successful request!', 'success');
+        Swal.fire('You are logged in!', 'Welcome!', 'success');
       })
   }
 
   destroyToken(): void {
     localStorage.removeItem('token');
     this.router.navigate(['/home']);
-    Swal.fire('You have closed session!', 'Successful request!', 'success');
+    Swal.fire('You have closed session!', 'Come back soon!', 'success');
   }
   
 }
