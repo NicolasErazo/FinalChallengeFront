@@ -44,8 +44,8 @@
                       <td *ngIf="!product.gmf">{{ product.updatedAt }}</td>
                       <td *ngIf="product.gmf" class="text-primary">{{ product.updatedAt }}</td>
                       <td><button type="button" name="button" class="btn btn-primary" [routerLink]="[product.id,'transactions']"><i class="fa-solid fa-circle-info"></i></button></td>
-                      <td><button type="button" name="button" class="btn btn-success" [routerLink]="['transactions',product.id,'add']"><i class="fa-solid fa-face-smile"></i></button></td>
-                      <td><button class="btn btn-danger" [routerLink]="[product.id]"><i class="fa-solid fa-code-compare"></i></button></td>
+                      <td><button type="button" name="button" class="btn btn-success" [routerLink]="['transactions',product.id,'add']"><i class="fa-solid fa-arrow-right-arrow-left"></i></button></td>
+                      <td><button class="btn btn-danger" [routerLink]="[product.id]"><i class="fa-solid fa-arrows-rotate"></i></button></td>
                     </tr>
                   </tbody>
                 </table>  
