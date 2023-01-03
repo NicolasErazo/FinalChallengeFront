@@ -12,7 +12,6 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-    //Login
     login(creds: login){
       return this.http.post(this.url, creds, {
         observe: 'response'
