@@ -24,21 +24,15 @@ export class AddTransactionComponent implements OnInit {
     private productService: ProductsService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.productService
-        .getAllProductsByClient(Number(params.get('idClient')))
-        .subscribe((res) => {
-          this.products = res;
-          this.idProduct = Number(params.get('idProduct'));
-        });
-    });
+    this.productService.getAllProducts().subscribe((c) => (this.products = c));
+    console.log(this.products);
   }
 
   createTransaction(): void {
-    if (this.transaction.typeOfTransaction == 'withdrawal') {
+    if (this.transaction.typeOfTransaction == 'withdrawal' && this.transaction.userCreator != null) {
       this.transaction.typeOfMovement = 'credit';
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.transactionService
@@ -48,34 +42,26 @@ export class AddTransactionComponent implements OnInit {
               this.router.navigate([
                 'clients' + '/' + Number(params.get('idClient')) + '/products',
               ]),
-                Swal.fire(
-                  'Transaction Made!',
-                  'Successful request!',
-                  'success'
-                );
+                Swal.fire('Transaction Made!','Successful request!','success');
             },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
               if (err.status == 500) {
-                Swal.fire(
-                  '¡Incorrect Information!',
-                  'Fill all the fields',
-                  'error'
-                );
-              }
-
-              if (err.status == 400) {
-                Swal.fire('Select a valid value!', 'Ok?', 'error');
+                Swal.fire('¡Incorrect Information!','Fill all the fields','error');
               }
 
               if (err.status == 406) {
                 Swal.fire('Transaction not allowed!', 'Ok?', 'error');
               }
+
+              if (err.status == 403) {
+                Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
+              }
             }
           );
       });
-    } else if (this.transaction.typeOfTransaction == 'consignment') {
+    } else if (this.transaction.typeOfTransaction == 'consignment' && this.transaction.userCreator != null) {
       this.transaction.typeOfMovement = 'debit';
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.transactionService
@@ -85,21 +71,13 @@ export class AddTransactionComponent implements OnInit {
               this.router.navigate([
                 'clients' + '/' + Number(params.get('idClient')) + '/products',
               ]),
-                Swal.fire(
-                  'Transaction Made!',
-                  'Successful request!',
-                  'success'
-                );
+                Swal.fire('Transaction Made!','Successful request!','success');
             },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
               if (err.status == 500) {
-                Swal.fire(
-                  '¡Incorrect Information!',
-                  'Fill all the fields',
-                  'error'
-                );
+                Swal.fire('¡Incorrect Information!','Fill all the fields','error');
               }
 
               if (err.status == 400) {
@@ -109,10 +87,14 @@ export class AddTransactionComponent implements OnInit {
               if (err.status == 406) {
                 Swal.fire('Transaction not allowed!', 'Ok?', 'error');
               }
+
+              if (err.status == 403) {
+                Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
+              }
             }
           );
       });
-    } else if (this.transaction.typeOfTransaction == 'transfer') {
+    } else if (this.transaction.typeOfTransaction == 'transfer' && this.transaction.userCreator != null) {
       this.transaction.typeOfMovement = 'credit';
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.transactionService
@@ -129,15 +111,11 @@ export class AddTransactionComponent implements OnInit {
                   .subscribe((res) => {
                     this.router.navigate([
                       'clients' +
-                        '/' +
-                        Number(params.get('idClient')) +
-                        '/products',
+                      '/' +
+                      Number(params.get('idClient')) +
+                      '/products',
                     ]),
-                      Swal.fire(
-                        'Transaction Made!',
-                        'Successful request!',
-                        'success'
-                      );
+                      Swal.fire('Transaction Made!','Successful request!','success');
                   });
               });
             },
@@ -145,20 +123,17 @@ export class AddTransactionComponent implements OnInit {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
               if (err.status == 500) {
-                Swal.fire(
-                  '¡Incorrect Information!',
-                  'Fill all the fields',
-                  'error'
-                );
-              }
-
-              if (err.status == 400) {
-                Swal.fire('Select a valid value!', 'Ok?', 'error');
+                Swal.fire('¡Incorrect Information!','Fill all the fields','error');
               }
 
               if (err.status == 406) {
                 Swal.fire('Transaction not allowed!', 'Ok?', 'error');
               }
+
+              if (err.status == 403) {
+                Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
+              }
+
             }
           );
       });
@@ -167,20 +142,19 @@ export class AddTransactionComponent implements OnInit {
         this.transactionService
           .createTransaction(this.transaction, Number(params.get('idProduct')))
           .subscribe(
-            (res) => {},
+            (res) => { },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
-              if (err.status == 500) {
-                Swal.fire(
-                  '¡Incorrect Information!',
-                  'Fill all the fields',
-                  'error'
-                );
+              if (err.status == 403) {
+                Swal.fire('¡Incorrect Information!','Fill all the fields','error');
               }
+
             }
           );
       });
+    } else {
+      Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
     }
   }
 }

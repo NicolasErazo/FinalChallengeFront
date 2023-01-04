@@ -2,7 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { login } from './login';
+import { Login } from './login';
 import { LoginService } from './login.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { LoginService } from './login.service';
 })
 export class LoginComponent{
 
-  loginDates: login = {
+  loginDates: Login = {
     email: '',
     password: ''
   };

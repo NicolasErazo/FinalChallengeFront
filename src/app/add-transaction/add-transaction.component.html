@@ -7,6 +7,16 @@
             <form>
 
                 <div class="row g-3 align-items-center py-2">
+                    <div class="col-md-2">
+                        <label for="accountType">Creator User:</label>
+                    </div>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" name="userCreator" [(ngModel)]="transaction.userCreator"
+                        aria-describedby="passwordHelpInline" placeholder="Useradmin who will create the transaction" value="Nicolas Erazo" required>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center py-2">
                     <div class="col-md-4">
                         <label for="accountType">Select the type of transaction to create:</label>
                     </div>

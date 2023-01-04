@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { login } from '../login/login';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',

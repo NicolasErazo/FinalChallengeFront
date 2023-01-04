@@ -15,7 +15,7 @@ export class AddClientComponent implements OnInit {
   constructor(
     private clientService: ClientsService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -24,6 +24,7 @@ export class AddClientComponent implements OnInit {
 
   create(): void {
     console.log(this.client);
+    console.log(this.client.userCreator);
     this.clientService.createClient(this.client).subscribe(
       (res) => {
         this.router.navigate(['/clients']),
@@ -32,7 +33,7 @@ export class AddClientComponent implements OnInit {
       (err) => {
         // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
-        if (err.status == 500) {
+        if (err.status == 403) {
           Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
         }
 
@@ -55,9 +56,13 @@ export class AddClientComponent implements OnInit {
   }
 
   update(): void {
-    this.clientService.updateClient(this.client).subscribe((res) => {
-      this.router.navigate(['/clients']),
-        Swal.fire('Client Updated!', 'Successful request!', 'success');
-    });
+    if(this.client.userModifier != null){
+      this.clientService.updateClient(this.client).subscribe((res) => {
+        this.router.navigate(['/clients']),
+          Swal.fire('Client Updated!', 'Successful request!', 'success');
+      });
+    }else{
+      Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
+    }
   }
 }

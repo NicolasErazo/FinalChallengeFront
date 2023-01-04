@@ -17,4 +17,6 @@ export class Transactions {
     availableBalance: number;
 
     product_id: number
+
+    userCreator: string;
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -15,7 +16,7 @@ export class AddProductComponent implements OnInit{
   client:Clients = new Clients();
   activatedRoute: any;
 
-  constructor(private productService: ProductsService, private router:Router,private route: ActivatedRoute ){}
+  constructor(private productService: ProductsService, private router:Router,private route: ActivatedRoute, private http: HttpClient ){}
   
   ngOnInit(): void {
     this.data();
@@ -29,12 +30,8 @@ export class AddProductComponent implements OnInit{
       (err) => {
         // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
-        if (err.status == 500) {
+        if (err.status == 403) {
           Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
-        }
-
-        if (err.status == 400) {
-          Swal.fire('Select a valid value!', 'Ok?', 'error');
         }
       }
     );
@@ -62,8 +59,8 @@ export class AddProductComponent implements OnInit{
         (err) => {
           // Entra aquí si el servicio entrega un código http de error EJ: 404,
           
-          if (err.status == 400) {
-            Swal.fire('Select a valid value!', 'Ok?', 'error');
+          if (err.status == 403) {
+            Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
           }
 
           if (err.status == 406) {
@@ -74,4 +71,5 @@ export class AddProductComponent implements OnInit{
     console.log(params.get('idProduct'))
       });
   }
+  
 }

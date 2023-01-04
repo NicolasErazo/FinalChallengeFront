@@ -1,7 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { login } from './login';
+import { Login } from './login';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
-    login(creds: login){
+    login(creds: Login){
       return this.http.post(this.url, creds, {
         observe: 'response'
       }).pipe(map((response: HttpResponse<any>) => {
@@ -30,5 +30,10 @@ export class LoginService {
 
     getToken(){
       return localStorage.getItem('token');
+    }
+
+    //Get user by Id
+    getUserById(id:number):Observable<Login>{
+      return this.http.get<Login>('http://localhost:8090/v0/api/user/'+id);
     }
 }

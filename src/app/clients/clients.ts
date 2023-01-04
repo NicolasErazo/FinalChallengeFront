@@ -14,6 +14,10 @@ export class Clients {
 
     dateOfBirth: Date;
 
+    userCreator: string;
+
+    userModifier: string;
+
     createdAt: Date;
 
     updatedAt: Date;

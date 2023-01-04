@@ -17,6 +17,10 @@ export class ProductsService {
     return this.http.get<Products[]>(this.url+'/'+id+'/products');
   }
 
+  getAllProducts():Observable<Products[]>{
+    return this.http.get<Products[]>('http://localhost:8090/v0/api/products');
+  }
+
   //Create Product by Client
   createProduct(product:Products, id:number):Observable<Products>{
     return this.http.post<Products>(this.url+'/'+id+'/products/add', product);

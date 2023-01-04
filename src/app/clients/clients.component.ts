@@ -30,12 +30,8 @@ export class ClientsComponent implements OnInit {
         console.log(err);
         // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
-        if (err.status == 500) {
-          Swal.fire(
-            '¡Cannot delete a customer with active products!',
-            'Ok?',
-            'error'
-          );
+        if (err.status == 403) {
+          Swal.fire('¡Cannot delete a customer with active products!','Ok?','error');
         }
       }
     );
