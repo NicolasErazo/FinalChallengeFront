@@ -32,8 +32,8 @@ export class LoginService {
       return localStorage.getItem('token');
     }
 
-    //Get user by Id
-    getUserById(id:number):Observable<Login>{
-      return this.http.get<Login>('http://localhost:8090/v0/api/user/'+id);
+    //Get users
+    getUsers():Observable<Login[]>{
+      return this.http.get<Login[]>('http://localhost:8090/v0/api/user');
     }
 }

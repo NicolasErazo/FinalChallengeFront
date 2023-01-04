@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Clients } from '../clients/clients';
 import { ClientsService } from '../clients/clients.service';
+import { Login } from '../login/login';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-add-client',
@@ -11,15 +13,18 @@ import { ClientsService } from '../clients/clients.service';
 })
 export class AddClientComponent implements OnInit {
   client: Clients = new Clients();
+  users: Login[];
 
   constructor(
     private clientService: ClientsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private userService: LoginService
   ) {}
 
   ngOnInit(): void {
     this.data();
+    this.userService.getUsers().subscribe((c) => (this.users = c));
   }
 
   create(): void {

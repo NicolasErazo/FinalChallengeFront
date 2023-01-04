@@ -7,23 +7,33 @@
             <form>
 
                 <div class="row g-3 align-items-center py-2" *ngIf="!client.id else elseBlockUser">
-                    <div class="col-md-2 text-center">
-                        <label for="accountType">Creator User:</label>
+                    <div class="col-md-4">
+                        <label for="accountType">Select the Creator User:</label>
                     </div>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" name="userCreator" [(ngModel)]="client.userCreator"
-                        aria-describedby="passwordHelpInline" placeholder="Useradmin who will create the client" value="Nicolas Erazo">
+                    <div class="col-md-8">
+                        <select class="form-select" aria-label="Default select example" name="id" [(ngModel)]="client.userCreator">
+                        <ng-container *ngFor="let user of users">
+                            <option value="{{user.name}}">
+                                {{ user.name }}
+                           </option>
+                        </ng-container>
+                        </select>
                     </div>
                 </div>
 
                 <ng-template #elseBlockUser>
                     <div class="row g-3 align-items-center py-2">
-                        <div class="col-md-2 text-center">
-                            <label for="accountType">User Modifier:</label>
+                        <div class="col-md-4">
+                            <label for="accountType">Select the User Modifier:</label>
                         </div>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="userModifier" [(ngModel)]="client.userModifier"
-                            aria-describedby="passwordHelpInline" placeholder="Useradmin who will modify the client" value="Nicolas Erazo">
+                        <div class="col-md-8">
+                            <select class="form-select" aria-label="Default select example" name="id" [(ngModel)]="client.userModifier">
+                            <ng-container *ngFor="let user of users">
+                                <option value="{{user.name}}">
+                                    {{ user.name }}
+                               </option>
+                            </ng-container>
+                            </select>
                         </div>
                     </div>
                 </ng-template>
