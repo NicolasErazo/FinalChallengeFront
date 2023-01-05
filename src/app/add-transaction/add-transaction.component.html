@@ -7,16 +7,6 @@
             <form>
 
                 <div class="row g-3 align-items-center py-2">
-                    <div class="col-md-2">
-                        <label for="accountType">Creator User:</label>
-                    </div>
-                    <div class="col-md-10">
-                        <input type="text" class="form-control" name="userCreator" [(ngModel)]="transaction.userCreator"
-                        aria-describedby="passwordHelpInline" placeholder="Useradmin who will create the transaction" value="Nicolas Erazo" required>
-                    </div>
-                </div>
-
-                <div class="row g-3 align-items-center py-2">
                     <div class="col-md-4">
                         <label for="accountType">Select the type of transaction to create:</label>
                     </div>
@@ -27,6 +17,21 @@
                             <option value="consignment">Consignment</option>
                             <option value="withdrawal">Withdrawal</option>
                             <option value="transfer">Transfer</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 align-items-center py-2">
+                    <div class="col-md-4">
+                        <label for="accountType">Select the Creator User:</label>
+                    </div>
+                    <div class="col-md-8">
+                        <select class="form-select" aria-label="Default select example" name="id" [(ngModel)]="transaction.userCreator">
+                        <ng-container *ngFor="let user of users">
+                            <option value="{{user.name}}">
+                                {{ user.name }}
+                           </option>
+                        </ng-container>
                         </select>
                     </div>
                 </div>

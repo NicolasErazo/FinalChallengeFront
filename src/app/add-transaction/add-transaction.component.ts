@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Login } from '../login/login';
+import { LoginService } from '../login/login.service';
 import { Products } from '../products/products';
 import { ProductsService } from '../products/products.service';
 import { Transactions } from '../transactions/transactions';
@@ -17,17 +19,20 @@ export class AddTransactionComponent implements OnInit {
   transaction: Transactions = new Transactions();
 
   products: Products[];
+  users: Login[];
   idProduct: any;
 
   constructor(
     private transactionService: TransactionsService,
     private productService: ProductsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: LoginService
   ) { }
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((c) => (this.products = c));
+    this.userService.getUsers().subscribe((c) => (this.users = c));
     console.log(this.products);
   }
 
