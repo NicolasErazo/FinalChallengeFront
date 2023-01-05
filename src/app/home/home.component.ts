@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent{
+
+  constructor(private loginService: LoginService){
+  }
+
+  token = this.loginService.getToken();
 
 }

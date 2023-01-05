@@ -1,57 +1,63 @@
 <div class="container py-4">
-    <div class="row">
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title text-center"><strong>Registered Products By Customer</strong></h5>
-            </div>
-            <div class="card-body">
-                <button class="btn btn-success" [routerLink]="['addProduct']">Create Product</button>&nbsp;
-                <a class="btn btn-secondary" href="/clients"><i class="fa-sharp fa-solid fa-arrow-left"></i></a>
-                <br><br>
-              <div class="table-responsive text-nowrap">
-                <table class="table table-striped table-bordered text-center">
-                  <thead>
-                    <tr>
-                      <th scope="col">Account Type</th>
-                      <th scope="col">Account Number</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Balance</th>
-                      <th scope="col">Available Balance</th>
-                      <th scope="col">GMF</th>
-                      <th scope="col">CreatedAt</th>
-                      <th scope="col">UpdatedAt</th>
-                      <th scope="col">Account Status</th>
-                      <th scope="col">Manage</th>
-                      <th scope="col">Change Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let product of products">
-                      <td *ngIf="!product.gmf">{{ product.accountType }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.accountType }}</td>
-                      <td *ngIf="!product.gmf">{{ product.accountNumber }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.accountNumber }}</td>
-                      <td *ngIf="!product.gmf">{{ product.status }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.status }}</td>
-                      <td *ngIf="!product.gmf">{{ product.balance }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.balance }}</td>
-                      <td *ngIf="!product.gmf">{{ product.availableBalance }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.availableBalance }}</td>
-                      <td *ngIf="!product.gmf">{{ product.gmf }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.gmf }}</td>
-                      <td *ngIf="!product.gmf">{{ product.createdAt }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.createdAt }}</td>
-                      <td *ngIf="!product.gmf">{{ product.updatedAt }}</td>
-                      <td *ngIf="product.gmf" class="text-primary">{{ product.updatedAt }}</td>
-                      <td><button type="button" name="button" class="btn btn-primary" [routerLink]="[product.id,'transactions']"><i class="fa-solid fa-circle-info"></i></button></td>
-                      <td><button type="button" name="button" class="btn btn-success" [routerLink]="['transactions',product.id,'add']"><i class="fa-solid fa-arrow-right-arrow-left"></i></button></td>
-                      <td><button class="btn btn-danger" [routerLink]="[product.id]"><i class="fa-solid fa-arrows-rotate"></i></button></td>
-                    </tr>
-                  </tbody>
-                </table>  
-              </div>
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="card-title text-center"><strong>Registered Products By Customer</strong></h5>
+      </div>
+      <div class="card-body">
+        <a title="back to the client form" class="btn btn-secondary" href="/clients"><i
+            class="fa-sharp fa-solid fa-arrow-left"></i></a>
+        <br>
+        <button class="btn btn-success mt-2" [routerLink]="['addProduct']"><i class="fa-solid fa-plus"></i>&nbsp;New
+          Product</button>
+        <br>
+        <div class="table-responsive text-nowrap mt-2">
+          <table class="table table-striped table-bordered text-center">
+            <thead>
+              <tr>
+                <th scope="col">Account Type</th>
+                <th scope="col">Account Number</th>
+                <th scope="col">Status</th>
+                <th scope="col">Balance</th>
+                <th scope="col">Available Balance</th>
+                <th scope="col">CreatedAt</th>
+                <th scope="col">UpdatedAt</th>
+                <th scope="col">Account Status</th>
+                <th scope="col">Manage</th>
+                <th scope="col">Change Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <td *ngIf="!product.gmf">{{ product.accountType }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.accountType }}</td>
+                <td *ngIf="!product.gmf">{{ product.accountNumber }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.accountNumber }}</td>
+                <td *ngIf="!product.gmf">{{ product.status }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.status }}</td>
+                <td *ngIf="!product.gmf">{{ product.balance }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.balance }}</td>
+                <td *ngIf="!product.gmf">{{ product.availableBalance }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.availableBalance }}</td>
+                <td *ngIf="!product.gmf">{{ product.createdAt }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.createdAt }}</td>
+                <td *ngIf="!product.gmf">{{ product.updatedAt }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.updatedAt }}</td>
+                <td><button title="Transactions logs" type="button" name="button" class="btn btn-primary"
+                    [routerLink]="[product.id,'transactions']"><i class="fa-solid fa-circle-info"></i></button></td>
+                <td><button title="Transactions creation" type="button" name="button" class="btn btn-success"
+                    [routerLink]="['transactions',product.id,'add']"><i
+                      class="fa-solid fa-arrow-right-arrow-left"></i></button></td>
+                <td><button title="Change status of the account: Active, Inactive, Canceled" class="btn btn-danger"
+                    [routerLink]="[product.id]"><i class="fa-solid fa-arrows-rotate"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-            </div>
-          </div>
+      </div>
     </div>
+  </div>
+  <br>
+  <h6><span class="text-primary">Blue: </span>This product is GMF exempted</h6>
 </div>
