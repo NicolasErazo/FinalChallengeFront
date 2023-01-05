@@ -33,7 +33,10 @@ export class AddTransactionComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((c) => (this.products = c));
     this.userService.getUsers().subscribe((c) => (this.users = c));
-    console.log(this.products);
+
+    //Account number validation
+    this.route.paramMap.subscribe((params: ParamMap) => {this.idProduct = params.get('idProduct')});
+    console.log(this.idProduct);
   }
 
   createTransaction(): void {
