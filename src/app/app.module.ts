@@ -15,6 +15,8 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './login/auth.interceptor';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { AuthInterceptor } from './login/auth.interceptor';
     TransactionsComponent,
     AddTransactionComponent,
     LoginComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

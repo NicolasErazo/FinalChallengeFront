@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row py-4">
         <div class="card py-4">
-            <div *ngIf="!token else elseBlock">
+            
                 <div class="card-header">
                     <h5 class="card-title text-center"><strong>Welcome to BankSophos</strong></h5>
                 </div>
@@ -27,16 +27,7 @@
                         </button>
                     </div>
                 </form>
-            </div>
-
-            <ng-template #elseBlock>
-                <div class="card-header">
-                    <h5 class="card-title text-center"><strong>Logout to BankSophos</strong></h5>
-                </div>
-                <div class="text-center mt-4">
-                    <a class="btn btn-danger" style="width: 226px" (click)="destroyToken()">Logout</a>
-                </div>
-            </ng-template>
+        
         </div>
     </div>
 </div>
