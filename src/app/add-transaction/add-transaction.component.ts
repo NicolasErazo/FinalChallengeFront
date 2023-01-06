@@ -109,20 +109,14 @@ export class AddTransactionComponent implements OnInit {
           .createTransaction(this.transaction, Number(params.get('idProduct')))
           .subscribe(
             (res) => {
-              this.router.navigate([
-                'clients' + '/' + Number(params.get('idClient')) + '/products',
+              this.router.navigate(['clients' + '/' + Number(params.get('idClient')) + '/products',
               ]),
-                (this.transaction.typeOfMovement = 'debit');
+              (this.transaction.typeOfMovement = 'debit');
               this.route.paramMap.subscribe((params: ParamMap) => {
                 this.transactionService
                   .createTransaction(this.transaction, this.product.id)
                   .subscribe((res) => {
-                    this.router.navigate([
-                      'clients' +
-                      '/' +
-                      Number(params.get('idClient')) +
-                      '/products',
-                    ]),
+                    this.router.navigate(['clients' +'/' +Number(params.get('idClient')) +'/products',]),
                       Swal.fire('Transaction Made!','Successful request!','success');
                   });
               });
