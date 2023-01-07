@@ -2,14 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: #000
+    height: 90vh;
+    background: #000;   
 }
 
 .profile {
     position: relative;
     width: 600px;
-    height: 550px;
+    height: 500px;
     background-image: url("../../assets/Profile.jpg");
     background-size: cover;
     cursor: pointer;
@@ -43,7 +43,7 @@
     text-align: center;
     justify-content: center;
     align-items: center;
-    left: 35%;
+    left: 37%;
 }
 
 .social-icons li {
@@ -70,14 +70,14 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    top: 10%;
+    top: 5%;
     color: #fff;
     flex: column
 }
 
 .overlay .professional-profile {
     position: absolute;
-    top: 30%;
+    top: 22%;
     display: flex;
     justify-content: center;
     align-items: center;
