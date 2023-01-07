@@ -15,7 +15,8 @@
     </div>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkupp">
       <div class="navbar-nav ms-auto">
-        <a class="nav-item nav-link" (click)="destroyToken()" href="/home">Logout</a>
+        <button *ngIf="token != null" class="btn btn-dark" (click)="destroyToken()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Log Out</button>
+        <a *ngIf="token == null" class="btn btn-dark" href="/login"><i class="fa-solid fa-user"></i>&nbsp;Login</a>
       </div>
     </div>
   </nav>

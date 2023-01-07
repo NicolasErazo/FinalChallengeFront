@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import { LoginService } from '../login/login.service';
 
 import { Clients } from './clients';
 import { ClientsService } from './clients.service';
@@ -12,7 +13,7 @@ import { ClientsService } from './clients.service';
 export class ClientsComponent implements OnInit {
   clients: Clients[];
 
-  constructor(private clientService: ClientsService) {}
+  constructor(private clientService: ClientsService, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.clientService.getAllClients().subscribe((c) => (this.clients = c));

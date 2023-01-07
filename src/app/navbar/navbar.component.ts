@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../login/login.service';
 
 @Component({
@@ -10,12 +11,15 @@ import { LoginService } from '../login/login.service';
 })
 export class NavbarComponent {
 
-  constructor(private router: Router) { } 
+  constructor(private router: Router, private loginService: LoginService) { }
+
+  token = this.loginService.getToken();
 
   destroyToken(): void {
     localStorage.removeItem('token');
-    this.router.navigate(['/home']);
-    Swal.fire('You have closed session!', 'Come back soon!', 'success');
+    window.location.replace('/home');
   }
-  
+
 }
+
+

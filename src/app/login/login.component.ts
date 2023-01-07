@@ -1,7 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ClientsComponent } from '../clients/clients.component';
 import { Login } from './login';
 import { LoginService } from './login.service';
 
@@ -26,20 +27,12 @@ export class LoginComponent{
 
     this.loginService.login(this.loginDates)
       .subscribe(response => {
-        this.router.navigate(['/home'])
-        Swal.fire('You are logged in!', 'Welcome!', 'success');
+        window.location.replace('/home');
       }, (err) =>{
-        
         if (err.status == 403) {
           Swal.fire('Enter allowed parameters!', 'Ok?', 'error');
         }
       })
   }
 
-  destroyToken(): void {
-    localStorage.removeItem('token');
-    this.router.navigate(['/home']);
-    Swal.fire('You have closed session!', 'Come back soon!', 'success');
-  }
-  
 }
