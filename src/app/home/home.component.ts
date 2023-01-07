@@ -14,9 +14,21 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(): void {
     if(!this.token){
-      Swal.fire('You have closed session!', 'Come back soon!', 'success');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'You have closed session!',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }else {
-      Swal.fire('You are logged in!', 'Welcome!', 'success');
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'You are logged in!',
+        showConfirmButton: false,
+        timer: 1500
+      })
     }
   }
 
