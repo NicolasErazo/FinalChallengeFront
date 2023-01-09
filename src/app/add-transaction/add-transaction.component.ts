@@ -41,7 +41,7 @@ export class AddTransactionComponent implements OnInit {
 
   createTransaction(): void {
     if (this.transaction.typeOfTransaction == 'withdrawal' && this.transaction.userCreator != null && this.transaction.description != null) {
-      this.transaction.typeOfMovement = 'credit';
+      this.transaction.typeOfMovement = 'debit';
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.transactionService
           .createTransaction(this.transaction, Number(params.get('idProduct')))
@@ -70,7 +70,7 @@ export class AddTransactionComponent implements OnInit {
           );
       });
     } else if (this.transaction.typeOfTransaction == 'consignment' && this.transaction.userCreator != null && this.transaction.description != null) {
-      this.transaction.typeOfMovement = 'debit';
+      this.transaction.typeOfMovement = 'credit';
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.transactionService
           .createTransaction(this.transaction, Number(params.get('idProduct')))
@@ -103,7 +103,7 @@ export class AddTransactionComponent implements OnInit {
           );
       });
     } else if (this.transaction.typeOfTransaction == 'transfer' && this.transaction.userCreator != null && this.transaction.description != null) {
-      this.transaction.typeOfMovement = 'credit';
+      this.transaction.typeOfMovement = 'debit';
       this.route.paramMap.subscribe((params: ParamMap) => {
         this.transactionService
           .createTransaction(this.transaction, Number(params.get('idProduct')))
@@ -111,7 +111,7 @@ export class AddTransactionComponent implements OnInit {
             (res) => {
               this.router.navigate(['clients' + '/' + Number(params.get('idClient')) + '/products',
               ]),
-              (this.transaction.typeOfMovement = 'debit');
+              (this.transaction.typeOfMovement = 'credit');
               this.route.paramMap.subscribe((params: ParamMap) => {
                 this.transactionService
                   .createTransaction(this.transaction, this.product.id)
