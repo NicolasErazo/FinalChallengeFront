@@ -26,6 +26,15 @@ export class ProductsComponent implements OnInit {
         .getAllProductsByClient(Number(params.get('id')))
         .subscribe((c) => {
           this.products = c;
+          if(this.products.length<=0){
+            Swal.fire({
+              position: 'center',
+              icon: 'question',
+              title: 'There are no registered products!',
+              showConfirmButton: false,
+              timer: 1500
+            })
+          }
           this.gmf = this.product.gmf;
         });
     });

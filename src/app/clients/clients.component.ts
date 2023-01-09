@@ -16,8 +16,21 @@ export class ClientsComponent implements OnInit {
   constructor(private clientService: ClientsService, private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.clientService.getAllClients().subscribe((c) => (this.clients = c));
+    this.clientService.getAllClients().subscribe((c) => { 
+      this.clients = c 
+      if(this.clients.length<=0){
+        Swal.fire({
+          position: 'center',
+          icon: 'question',
+          title: 'No registered customers!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      }
+    });
   }
+
+
 
   delete(client: Clients): void {
     this.clientService.deleteClientById(client.id).subscribe(
