@@ -65,6 +65,12 @@ export class AddClientComponent implements OnInit {
       this.clientService.updateClient(this.client).subscribe((res) => {
         this.router.navigate(['/clients']),
           Swal.fire('Client Updated!', 'Successful request!', 'success');
+      },
+      (err) => {
+        // Entra aquí si el servicio entrega un código http de error EJ: 404,
+        if (err.status == 400) {
+          Swal.fire('You must be of legal age!', 'Ok?', 'error');
+        }
       });
     }else{
       Swal.fire('¡Incorrect Information!', 'Fill all the fields', 'error');
