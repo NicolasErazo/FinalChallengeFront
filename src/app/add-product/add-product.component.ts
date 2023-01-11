@@ -25,7 +25,7 @@ export class AddProductComponent implements OnInit{
   createProduct():void{
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.productService.createProduct(this.product, Number(params.get('id'))).subscribe(
-        res=>{this.router.navigate(['clients'+'/'+Number(params.get('id'))+'/products']),
+        res=>{this.router.navigate(['clients'+'/'+Number(params.get('id'))+'/products']);
         Swal.fire('Product Created!', 'Successful request!', 'success');},
       (err) => {
         // Entra aquí si el servicio entrega un código http de error EJ: 404,
@@ -54,7 +54,7 @@ export class AddProductComponent implements OnInit{
   update():void{
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.productService.updateProduct(this.product, Number(params.get('id'))).subscribe(
-        res=>{this.router.navigate(['clients'+'/'+Number(params.get('id'))+'/products']),
+        res=>{this.router.navigate(['clients'+'/'+Number(params.get('id'))+'/products']);
         Swal.fire('Product Updated!', 'Successful request!', 'success');},
         (err) => {
           // Entra aquí si el servicio entrega un código http de error EJ: 404,

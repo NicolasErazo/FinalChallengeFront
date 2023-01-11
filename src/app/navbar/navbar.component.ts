@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-import { HomeComponent } from '../home/home.component';
 import { LoginService } from '../login/login.service';
 
 @Component({

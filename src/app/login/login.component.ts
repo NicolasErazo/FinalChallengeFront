@@ -1,8 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ClientsComponent } from '../clients/clients.component';
 import { Login } from './login';
 import { LoginService } from './login.service';
 

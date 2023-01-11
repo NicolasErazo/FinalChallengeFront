@@ -32,8 +32,8 @@ export class AddClientComponent implements OnInit {
     console.log(this.client.userCreator);
     this.clientService.createClient(this.client).subscribe(
       (res) => {
-        this.router.navigate(['/clients']),
-          Swal.fire('Client Created!', 'Successful request!', 'success');
+        this.router.navigate(['/clients']);
+        Swal.fire('Client Created!', 'Successful request!', 'success');
       },
       (err) => {
         // Entra aquí si el servicio entrega un código http de error EJ: 404,
@@ -63,8 +63,8 @@ export class AddClientComponent implements OnInit {
   update(): void {
     if(this.client.userModifier != null){
       this.clientService.updateClient(this.client).subscribe((res) => {
-        this.router.navigate(['/clients']),
-          Swal.fire('Client Updated!', 'Successful request!', 'success');
+        this.router.navigate(['/clients']);
+        Swal.fire('Client Updated!', 'Successful request!', 'success');
       },
       (err) => {
         // Entra aquí si el servicio entrega un código http de error EJ: 404,

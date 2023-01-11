@@ -47,10 +47,8 @@ export class AddTransactionComponent implements OnInit {
           .createTransaction(this.transaction, Number(params.get('idProduct')))
           .subscribe(
             (res) => {
-              this.router.navigate([
-                'clients' + '/' + Number(params.get('idClient')) + '/products',
-              ]),
-                Swal.fire('Transaction Made!','Successful request!','success');
+              this.router.navigate(['clients' + '/' + Number(params.get('idClient')) + '/products',]);
+              Swal.fire('Transaction Made!','Successful request!','success');
             },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
@@ -76,10 +74,8 @@ export class AddTransactionComponent implements OnInit {
           .createTransaction(this.transaction, Number(params.get('idProduct')))
           .subscribe(
             (res) => {
-              this.router.navigate([
-                'clients' + '/' + Number(params.get('idClient')) + '/products',
-              ]),
-                Swal.fire('Transaction Made!','Successful request!','success');
+              this.router.navigate(['clients' + '/' + Number(params.get('idClient')) + '/products',]);
+              Swal.fire('Transaction Made!','Successful request!','success');
             },
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
@@ -116,7 +112,7 @@ export class AddTransactionComponent implements OnInit {
                 this.transactionService
                   .createTransaction(this.transaction, this.product.id)
                   .subscribe((res) => {
-                    this.router.navigate(['clients' +'/' +Number(params.get('idClient')) +'/products',]),
+                    this.router.navigate(['clients' +'/' +Number(params.get('idClient')) +'/products',]);
                       Swal.fire('Transaction Made!','Successful request!','success');
                   });
               });

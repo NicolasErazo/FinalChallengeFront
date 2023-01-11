@@ -36,8 +36,8 @@ export class ClientsComponent implements OnInit {
     this.clientService.deleteClientById(client.id).subscribe(
       (res) => {
         this.clientService.getAllClients().subscribe((response) => {
-          (this.clients = response),
-            Swal.fire('Client Deleted!', 'Successful request!', 'success');
+          (this.clients = response);
+          Swal.fire('Client Deleted!', 'Successful request!', 'success');
         });
       },
       (err) => {
