@@ -144,7 +144,7 @@ export class AddTransactionComponent implements OnInit {
             (err) => {
               // Entra aquí si el servicio entrega un código http de error EJ: 404,
 
-              if (err.status == 403) {
+              if (err.status == 406) {
                 Swal.fire('¡Incorrect Information!','Fill all the fields','error');
               }
 
