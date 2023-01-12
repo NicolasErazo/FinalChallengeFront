@@ -39,10 +39,10 @@
                 <td *ngIf="product.gmf" class="text-primary">{{ product.balance }}</td>
                 <td *ngIf="!product.gmf">{{ product.availableBalance }}</td>
                 <td *ngIf="product.gmf" class="text-primary">{{ product.availableBalance }}</td>
-                <td *ngIf="!product.gmf">{{ product.createdAt }}</td>
-                <td *ngIf="product.gmf" class="text-primary">{{ product.createdAt }}</td>
-                <td *ngIf="!product.gmf">{{ product.updatedAt }}</td>
-                <td *ngIf="product.gmf" class="text-primary">{{ product.updatedAt }}</td>
+                <td *ngIf="!product.gmf">{{ product.createdAt | date:'short' }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.createdAt | date:'short' }}</td>
+                <td *ngIf="!product.gmf">{{ product.updatedAt | date:'short' }}</td>
+                <td *ngIf="product.gmf" class="text-primary">{{ product.updatedAt | date:'short' }}</td>
                 <td><button title="Transactions logs" type="button" name="button" class="btn btn-primary"
                     [routerLink]="[product.id,'transactions']"><i class="fa-solid fa-circle-info"></i></button></td>
                 <td><button title="Transactions creation" type="button" name="button" class="btn btn-success"

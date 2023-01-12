@@ -25,7 +25,7 @@
                       <td>{{ transaction.description }}</td>
                       <td>{{ transaction.value }}</td>
                       <td>{{ transaction.typeOfMovement }}</td>
-                      <td>{{ transaction.dateOfMovement }}</td>
+                      <td>{{ transaction.dateOfMovement | date:'short' }}</td>
                       <td>{{ transaction.userCreator }}</td>
                     </tr>
                   </tbody>
