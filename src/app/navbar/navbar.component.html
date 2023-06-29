@@ -13,7 +13,7 @@
         <a title="Create a new Client" class="nav-item nav-link active" href="/addClient">New Client</a>
       </div>
       <div class="navbar-nav ms-auto">
-        <button title="Close Sesion" *ngIf="token != null" class="btn btn-dark" (click)="destroyToken()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Log Out</button>
+        <button title="Close Sesion" *ngIf="token != null" class="btn btn-dark" (click)="destroyToken()">Log Out&nbsp;<i class="fa-solid fa-right-from-bracket"></i></button>
         <a *ngIf="token == null" class="btn btn-dark" href="/login">Login&nbsp;<i class="fa-solid fa-user"></i></a>
       </div>
     </div>
