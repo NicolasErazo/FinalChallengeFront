@@ -9,12 +9,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div *ngIf="token" class="navbar-nav">
-        <a title="" class="nav-item nav-link active" href="/clients">Clients Info</a>
-        <a class="nav-item nav-link active" href="/addClient">New Client</a>
+        <a title="View Clients Info" class="nav-item nav-link active" href="/clients">Clients Info</a>
+        <a title="Create a new Client" class="nav-item nav-link active" href="/addClient">New Client</a>
       </div>
       <div class="navbar-nav ms-auto">
-        <button *ngIf="token != null" class="btn btn-dark" (click)="destroyToken()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Log Out</button>
-        <a *ngIf="token == null" class="btn btn-dark" href="/login"><i class="fa-solid fa-user"></i>&nbsp;Login</a>
+        <button title="Close Sesion" *ngIf="token != null" class="btn btn-dark" (click)="destroyToken()"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;Log Out</button>
+        <a *ngIf="token == null" class="btn btn-dark" href="/login">Login&nbsp;<i class="fa-solid fa-user"></i></a>
       </div>
     </div>
 
