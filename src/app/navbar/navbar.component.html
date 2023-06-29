@@ -8,7 +8,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
+      <div *ngIf="token" class="navbar-nav">
         <a title="" class="nav-item nav-link active" href="/clients">Clients Info</a>
         <a class="nav-item nav-link active" href="/addClient">New Client</a>
       </div>
